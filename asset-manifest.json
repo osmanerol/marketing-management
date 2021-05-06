@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/marketing-management/static/css/main.c4c1babb.chunk.css",
-    "main.js": "/marketing-management/static/js/main.8b840179.chunk.js",
-    "main.js.map": "/marketing-management/static/js/main.8b840179.chunk.js.map",
+    "main.js": "/marketing-management/static/js/main.cf47c73d.chunk.js",
+    "main.js.map": "/marketing-management/static/js/main.cf47c73d.chunk.js.map",
     "runtime-main.js": "/marketing-management/static/js/runtime-main.ea691f2b.js",
     "runtime-main.js.map": "/marketing-management/static/js/runtime-main.ea691f2b.js.map",
     "static/css/2.150d169a.chunk.css": "/marketing-management/static/css/2.150d169a.chunk.css",
@@ -22,6 +22,6 @@
     "static/css/2.150d169a.chunk.css",
     "static/js/2.8ddfc570.chunk.js",
     "static/css/main.c4c1babb.chunk.css",
-    "static/js/main.8b840179.chunk.js"
+    "static/js/main.cf47c73d.chunk.js"
   ]
 }
