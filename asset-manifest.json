@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/marketing-management/static/css/main.c4c1babb.chunk.css",
+    "main.js": "/marketing-management/static/js/main.8b840179.chunk.js",
+    "main.js.map": "/marketing-management/static/js/main.8b840179.chunk.js.map",
+    "runtime-main.js": "/marketing-management/static/js/runtime-main.ea691f2b.js",
+    "runtime-main.js.map": "/marketing-management/static/js/runtime-main.ea691f2b.js.map",
+    "static/css/2.150d169a.chunk.css": "/marketing-management/static/css/2.150d169a.chunk.css",
+    "static/js/2.8ddfc570.chunk.js": "/marketing-management/static/js/2.8ddfc570.chunk.js",
+    "static/js/2.8ddfc570.chunk.js.map": "/marketing-management/static/js/2.8ddfc570.chunk.js.map",
+    "static/js/3.90f79635.chunk.js": "/marketing-management/static/js/3.90f79635.chunk.js",
+    "static/js/3.90f79635.chunk.js.map": "/marketing-management/static/js/3.90f79635.chunk.js.map",
+    "index.html": "/marketing-management/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/marketing-management/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.c4c1babb.chunk.css.map": "/marketing-management/static/css/main.c4c1babb.chunk.css.map",
+    "static/js/2.8ddfc570.chunk.js.LICENSE.txt": "/marketing-management/static/js/2.8ddfc570.chunk.js.LICENSE.txt",
+    "static/media/login.2cbb0f7a.jpg": "/marketing-management/static/media/login.2cbb0f7a.jpg",
+    "static/media/signup.60a00d5f.jpg": "/marketing-management/static/media/signup.60a00d5f.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea691f2b.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.8ddfc570.chunk.js",
+    "static/css/main.c4c1babb.chunk.css",
+    "static/js/main.8b840179.chunk.js"
+  ]
+}
