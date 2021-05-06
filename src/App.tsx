@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-function App() {
+// pages
+import CategoryPage from './pages/CategoryPage';
+import CustomerPage from './pages/CustomerPage';
+import ProductPage from './pages/ProductPage';
+import ServicePage from './pages/ServicePage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Switch>
+        <Redirect exact from='/' to='/login' />
+        <Route path='/panel/category' exact strict component={CategoryPage} />
+        <Route path='/panel/customer' exact strict component={CustomerPage} />
+        <Route path='/panel/ProductPage' exact strict component={ProductPage} />
+        <Route path='/panel/ServicePage' exact strict component={ServicePage} />
+        <Route path='/login' exact strict component={LoginPage} />
+        <Route path='/signup' exact strict component={SignupPage} />
+        <Route exact strict component={NotFoundPage} />
+      </Switch>
+    </>
   );
-}
+};
+
 
 export default App;

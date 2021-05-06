@@ -1,0 +1,6 @@
+.chakra-button{
+    height: 44px! important;
+    &:focus{
+        box-shadow: none! important;
+    }
+}
