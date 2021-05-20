@@ -1,0 +1,20 @@
+.custom-select{
+    border-radius: .25rem! important;
+    border: 1px solid #999! important;
+    &:focus{
+        box-shadow: none! important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .custom-select{
+        height: 40px! important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .custom-select{
+        height: 44px! important;
+    }
+}
+    

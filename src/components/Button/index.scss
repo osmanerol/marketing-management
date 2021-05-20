@@ -1,6 +1,18 @@
 .chakra-button{
-    height: 44px! important;
     &:focus{
         box-shadow: none! important;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .chakra-button{
+        height: 40px! important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .chakra-button{
+        height: 44px! important;
+    }
+}
+    

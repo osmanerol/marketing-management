@@ -1,0 +1,135 @@
+.panel-container{
+    .content{
+        .page-container{
+            width: 100%;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            header{
+                display: flex;
+                flex-direction: row;
+                .button{
+                    .chakra-button{
+                        background-color: #457b9d;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+}
+}
+
+@media screen and (max-width: 768px){
+    .panel-container{
+        display: flex;
+        flex-direction: column;
+        .content{
+            margin-top: 30px;
+            .page-container{
+                padding: 20px;
+                header{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                main{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px){
+    .panel-container{
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+        .menu{
+            height: 100vh;
+            position: fixed;
+            width: 220px;
+        }
+        .content{
+            width: calc(100% - 220px);
+            min-height: 100%;
+            margin-left: 220px;
+            padding: 30px 40px;
+            .page-container{
+                padding: 20px;
+                header{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                main{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){
+    .panel-container{
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+        .menu{
+            height: 100vh;
+            position: fixed;
+            width: 250px;
+        }
+        .content{
+            width: calc(100% - 250px);
+            min-height: 100%;
+            margin-left: 250px;
+            padding: 30px;
+            .page-container{
+                padding: 20px;
+                header{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                main{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .panel-container{
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh;
+        .menu{
+            height: 100vh;
+            position: fixed;
+            width: 280px;
+        }
+        .content{
+            width: calc(100% - 280px);
+            min-height: 100%;
+            margin-left: 280px;
+            padding: 60px;
+            .page-container{
+                padding: 20px;
+                header{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                main{
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}

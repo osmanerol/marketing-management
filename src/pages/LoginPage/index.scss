@@ -30,11 +30,6 @@
                         }
                     }
                 }
-                .go-signup, .aggreements{
-                    & > *{
-                        font-size: .9rem;
-                    }
-                }
             }
         }
     }
@@ -54,15 +49,18 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    & > *{
-                        margin-bottom: 24px;
-                    }
                     .form-element{
                         .form-button{
                             .chakra-button{
                                 width: 100%;
                             }
                         }
+                    }
+                    .go-signup, .aggreements{
+                        text-align: center;
+                    }
+                    & > *{
+                        margin-bottom: 24px;
                     }
                 }
             }
@@ -84,15 +82,18 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    & > *{
-                        margin-bottom: 24px;
-                    }
                     .form-element{
                         .form-button{
                             .chakra-button{
                                 width: 100%;
                             }
                         }
+                    }
+                    .go-signup, .aggreements{
+                        text-align: center;
+                    }
+                    & > *{
+                        margin-bottom: 24px;
                     }
                 }
             }

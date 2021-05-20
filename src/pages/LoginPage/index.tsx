@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.scss';
 import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { Input, Button } from '../../components';
 import LoginImage from '../../assets/login.jpg';
@@ -12,6 +12,7 @@ const Index = () => {
         password: ''
     })
     const toast = useToast();
+    const history = useHistory();
 
     const clickLogin = () => {
         if(user.username !== '' && user.password !== ''){
@@ -19,16 +20,19 @@ const Index = () => {
                 title: "Giriş Başarılı",
                 description: "Panele yönlendiriliyorsunuz.",
                 status: "success",
-                duration: 3000,
+                duration: 2000,
                 isClosable: true,
             })
+            setTimeout(() => {
+                history.push('/panel');
+            }, 2000)
         }
         else{
             toast({
                 title: "Hata",
                 description: "Tüm alanları doldurunuz.",
                 status: "error",
-                duration: 3000,
+                duration: 2000,
                 isClosable: true,
             })
         }
@@ -50,11 +54,11 @@ const Index = () => {
                             <Button text='Giriş Yap' className='form-button' onClick={clickLogin} />
                         </div>
                         <div className="go-signup">
-                            <p>Hesabın yok mu ? <Link to='/signup'>Kaydol</Link></p>
+                            <p className='text'>Hesabın yok mu ? <Link to='/signup'>Kaydol</Link></p>
                         </div>
                         <div className="aggreements">
-                            <Link to='/'>Üyelik Sözleşmesi , </Link>
-                            <Link to='/'>Gizlilik Sözleşmesi</Link>
+                            <Link to='/' className='text'>Üyelik Sözleşmesi , </Link>
+                            <Link to='/' className='text'>Gizlilik Sözleşmesi</Link>
                         </div>
                     </div>
                 </form>

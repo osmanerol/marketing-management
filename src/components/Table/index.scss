@@ -1,0 +1,37 @@
+.table-container{
+    .table-overflow-container{
+        overflow-x: scroll;
+        .table{
+            .action-button{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                cursor: pointer;
+                font-weight: bold;
+                .text{
+                    margin-left: 6px;
+                }
+            }
+            .action-button:first-of-type{
+                margin-right: 10px;
+            }
+            .update{
+                color: #4aa96c;
+            }
+            .delete{
+                color: #e63946;
+            }
+            th, td{
+                max-width: 100px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+    .pagination{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+}

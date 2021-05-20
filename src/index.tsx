@@ -5,13 +5,19 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'mobx-react';
+import store from './application/store';
+
+//<BrowserRouter basename={process.env.PUBLIC_URL}>
 
 ReactDOM.render(
-  <ChakraProvider>
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <App />
-    </BrowserRouter>
-  </ChakraProvider>,
+  <Provider { ...store }>
+    <ChakraProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ChakraProvider>
+  </Provider>,
   document.getElementById('root')
 );
 
