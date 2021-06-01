@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './index.scss';
 import { NavLink, useHistory } from 'react-router-dom';
 import { Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure } from "@chakra-ui/react"
-import { FaUsers, FaUser } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa';
 import { RiSettings3Fill } from 'react-icons/ri';
 import { FaProjectDiagram } from 'react-icons/fa';
 import { GiTennisBall } from 'react-icons/gi';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { MdPayment } from 'react-icons/md';
 import { RiLogoutCircleRFill } from 'react-icons/ri';
 
 const Index = () => {
@@ -50,7 +51,7 @@ const Index = () => {
                                     <NavLink to='/panel/product' className='menu-item-link'><GiTennisBall className='icon' /> <span>Ürünler</span></NavLink>
                                     <NavLink to='/panel/service' className='menu-item-link'><RiSettings3Fill className='icon' /> <span>Servisler</span></NavLink>
                                     <NavLink to='/panel/customer' className='menu-item-link'><FaUsers className='icon' /> <span>Müşteriler</span></NavLink>
-                                    <NavLink to='/panel/profile' className='menu-item-link'><FaUser className='icon' /> <span>Profil</span></NavLink>
+                                    <NavLink to='/panel/sales' className='menu-item-link'><MdPayment className='icon' /> <span>Satışlar</span></NavLink>
                                     <span className='menu-item-link' onClick={logout}><RiLogoutCircleRFill className='icon' /> <span>Çıkış Yap</span></span>
                                 </div>
                             </DrawerBody>
@@ -63,7 +64,7 @@ const Index = () => {
                     <NavLink to='/panel/product' className='menu-item-link'><GiTennisBall className='icon' /> <span>Ürünler</span></NavLink>
                     <NavLink to='/panel/service' className='menu-item-link'><RiSettings3Fill className='icon' /> <span>Servisler</span></NavLink>
                     <NavLink to='/panel/customer' className='menu-item-link'><FaUsers className='icon' /> <span>Müşteriler</span></NavLink>
-                    <NavLink to='/panel/profile' className='menu-item-link'><FaUser className='icon' /> <span>Profil</span></NavLink>
+                    <NavLink to='/panel/sales' className='menu-item-link'><MdPayment className='icon' /> <span>Satışlar</span></NavLink>
                     <span className='menu-item-link' onClick={logout}><RiLogoutCircleRFill className='icon' /> <span>Çıkış Yap</span></span>
                 </div>
             }

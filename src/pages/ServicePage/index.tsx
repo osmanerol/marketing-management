@@ -12,7 +12,7 @@ const Index : FC<IDefaultProps> = inject('ServiceStore')(observer((props : IDefa
     const { ServiceStore : store } = props;
     const [showModal, setShowModal] = useState(false);
     const [id, setId] = useState<any>(null);
-    const headers = [ { name : 'Ad', accessor : 'name'}, { name : 'Kategori', accessor : 'category'}, { name : 'Fiyat', accessor : 'price'}, { name : 'Açıklama', accessor : 'description'} ];
+    const headers = [ { name : 'Ad', accessor : 'name'}, { name : 'Kategori', accessor : 'category'}, { name : 'Fiyat / Ay', accessor : 'price'}, { name : 'Açıklama', accessor : 'description'} ];
 
     const handleOpenModal = () => {
         setId(0);

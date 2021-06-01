@@ -50,6 +50,16 @@ class ServiceStore {
         this.serviceList.isLoading = false;
     }
 
+    @action async getServices(){
+        this.serviceList.isLoading = true;
+        this.serviceList.result = [];
+        await firestore.collection('services').orderBy('name').get().then(async (item : any) => {
+            let list = item.docs.map((doc : any) => doc.data());
+            this.serviceList.result = list;
+        });
+        this.serviceList.isLoading = false;
+    }
+
     @action async get(id : any) {
         await firestore.collection('services').doc(id).get().then(async (item : any) => {
            let doc = { id : id, ...item.data()};

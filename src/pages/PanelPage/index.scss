@@ -8,6 +8,13 @@
             header{
                 display: flex;
                 flex-direction: row;
+                .button-container{
+                    display: flex;
+                    flex-direction: row;
+                    .button:last-child{
+                        margin-left: 8px;
+                    }
+                }
                 .button{
                     .chakra-button{
                         background-color: #457b9d;

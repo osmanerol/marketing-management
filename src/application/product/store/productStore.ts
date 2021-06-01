@@ -50,6 +50,16 @@ class ProductStore {
         this.productList.isLoading = false;
     }
 
+    @action async getProducts(){
+        this.productList.isLoading = true;
+        this.productList.result = [];
+        await firestore.collection('products').orderBy('name').get().then(async (item : any) => {
+            let list = item.docs.map((doc : any) => doc.data());
+            this.productList.result = list;
+        });
+        this.productList.isLoading = false;
+    }
+
     @action async get(id : any) {
         await firestore.collection('products').doc(id).get().then(async (item : any) => {
            let doc = { id : id, ...item.data()};

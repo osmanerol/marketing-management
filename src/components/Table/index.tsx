@@ -4,18 +4,20 @@ import { ConfirmModal, Spinner } from '../../components';
 import { Table, Pagination } from 'react-bootstrap';
 import { MdLoop } from 'react-icons/md';
 import { AiFillDelete } from 'react-icons/ai';
+import { CgReadme } from 'react-icons/cg';
 
 interface IDefaultProps{
     headers : any;
     items : any;
-    clickUpdate : any;
-    clickDelete : any;
+    clickUpdate? : any;
+    clickDelete? : any;
+    clickInspect? : any;
     isLoading : boolean;
     fetchData : any;
 }
 
 const Index : FC<IDefaultProps> = (props : IDefaultProps) => {
-    const { headers, items, clickUpdate, clickDelete, isLoading, fetchData } = props;
+    const { headers, items, clickUpdate, clickDelete, clickInspect, isLoading, fetchData } = props;
     const [page, setPage] = useState(0);
     const [showConfirm, setShowConfirm] = useState(false);
     const [deleteId, setDeleteId] = useState(0);
@@ -51,8 +53,17 @@ const Index : FC<IDefaultProps> = (props : IDefaultProps) => {
                                     {
                                         headers.map((item : any, index : number) => <th key={index}>{item.name}</th>)
                                     }
-                                    <th>Güncelle</th>
-                                    <th>Sil</th>
+                                    {
+                                        clickUpdate && 
+                                        <>
+                                            <th>Güncelle</th>
+                                            <th>Sil</th>
+                                        </>
+                                    }
+                                    {
+                                        clickInspect &&
+                                        <th>İncele</th>
+                                    }
                                 </tr>
                             </thead>
                             <tbody>
@@ -64,12 +75,23 @@ const Index : FC<IDefaultProps> = (props : IDefaultProps) => {
                                                     <td key={dataIndex}>{item[data['accessor']]}</td>
                                                 ))
                                             }
-                                            <td>
-                                                <span className='action-button update' onClick={() => clickUpdate(item.id)}><MdLoop className='icon' /><span className='text'>Güncelle</span></span>
-                                            </td>
-                                            <td>
-                                                <span className='action-button delete' onClick={() => handleDelete(item.id)}><AiFillDelete className='icon' /><span className='text'>Sil</span></span>
-                                            </td>
+                                            {
+                                                clickUpdate && 
+                                                <>
+                                                    <td>
+                                                        <span className='action-button update' onClick={() => clickUpdate(item.id)}><MdLoop className='icon' /><span className='text'>Güncelle</span></span>
+                                                    </td>
+                                                    <td>
+                                                        <span className='action-button delete' onClick={() => handleDelete(item.id)}><AiFillDelete className='icon' /><span className='text'>Sil</span></span>
+                                                    </td>
+                                                </>
+                                            }
+                                            {
+                                                clickInspect &&
+                                                <td>
+                                                    <span className='action-button inspect' onClick={() => clickInspect(item.id)}><CgReadme className='icon' /><span className='text'>İncele</span></span>
+                                                </td>
+                                            }
                                         </tr>
                                     ))
                                 }

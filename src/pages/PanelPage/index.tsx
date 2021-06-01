@@ -3,7 +3,7 @@ import './index.scss';
 import { Menu } from '../../components';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { CategoryPage, CustomerPage, ProductPage, ServicePage, ProfilePage } from '../index';
+import { CategoryPage, CustomerPage, ProductPage, ServicePage, SalesPage, AddSalesPage } from '../index';
     
 const Index = () => {
 
@@ -17,7 +17,8 @@ const Index = () => {
                     <Route path='/panel/product' component={ProductPage} />
                     <Route path='/panel/service' component={ServicePage} />
                     <Route path='/panel/customer' component={CustomerPage} />   
-                    <Route path='/panel/profile' component={ProfilePage} />   
+                    <Route path='/panel/sales' exact component={SalesPage} />   
+                    <Route path='/panel/sales/add' component={AddSalesPage} />   
                 </Switch>
             </div>
         </div>
