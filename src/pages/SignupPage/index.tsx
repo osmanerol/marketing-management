@@ -1,32 +1,57 @@
-import React, { useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import './index.scss';
+import { inject, observer } from 'mobx-react';
 import { useHistory } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { Input, Button } from '../../components';
 import SignupImage from '../../assets/signup.jpg';
+import UserStore from '../../application/user/store/userStore';
 
-const Index = () => {
-    const [user, setUser] = useState({
-        username : '',
-        password: ''
-    })
+interface IDefaultProps{
+    UserStore? : typeof UserStore
+}
+
+const Index : FC<IDefaultProps> = inject('UserStore')(observer((props : IDefaultProps) => {
+    const { UserStore : store } = props;
     const history = useHistory();
     const toast = useToast();
 
-    const clickSignup = () => {
-        if(user.username !== '' && user.password !== ''){
-            toast({
-                title: "Giriş Başarılı",
-                description: "Giriş ekranına yönlendiriliyorsunuz.",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-            })
-            setTimeout(() => {
-                history.push('/login');
-            }, 2000)
+    useEffect(() => {
+        if(localStorage.getItem('logged-in')){
+            history.push('/panel');
+        }
+        else{
+            store!.error = null;
+            store!.createUser();
+        }
+    }, [])
+
+    const handleSubmit = async () => {
+        if(store!.user.email !== '' && store!.user.password !== ''){
+            await store!.signup();
+            if(store!.error){
+                toast({
+                    title: "Hata",
+                    description: "Hesap oluşturulurken hata oluştu. Tekrar deneyiniz.",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                })
+            }
+            else{
+                toast({
+                    title: "Kayıt Başarılı",
+                    description: "Giriş ekranına yönlendiriliyorsunuz.",
+                    status: "success",
+                    duration: 3000,
+                    isClosable: true,
+                })
+                setTimeout(() => {
+                    history.push('/login');
+                }, 2000)
+            }
         }
         else{
             toast({
@@ -50,9 +75,9 @@ const Index = () => {
                         <h2 className='title'>Marketing Management</h2>
                         <h2 className='sub-title'>Yeni hesap oluştur</h2>
                         <div className='form-element'>
-                            <Input text='Kullanıcı adı' onChange={(event : any) => setUser({...user, username : event?.target.value})} />
-                            <Input type='password' text='Şifre' onChange={(event : any) => setUser({...user, password : event?.target.value})} />
-                            <Button text='Hesap Oluştur' className='form-button' onClick={clickSignup} />
+                            <Input text='E-posta' type='email' onChange={(event : any) => store!.user.email = event?.target.value } />
+                            <Input type='password' text='Şifre' onChange={(event : any) => store!.user.password = event?.target.value } />
+                            <Button text='Hesap Oluştur' className='form-button' onClick={handleSubmit} />
                         </div>
                         <div className="go-login">
                             <p className='text'>Zaten hesabın var mı ? <Link to='/login'>Giriş Yap</Link></p>
@@ -66,6 +91,6 @@ const Index = () => {
             </div>
         </Container>
     );
-};
+}));
 
 export default Index;

@@ -71,9 +71,12 @@ const Index : FC<IDefaultProps> = (props : IDefaultProps) => {
                                     items.map((item : any, index : number) =>(
                                         <tr key={index}>
                                             {
-                                                headers.map((data : any, dataIndex : number) => (
-                                                    <td key={dataIndex}>{item[data['accessor']]}</td>
-                                                ))
+                                                headers.map((data : any, dataIndex : number) => {
+                                                    if(data['accessor'] === 'type'){
+                                                        return <td key={dataIndex}>{item[data['accessor']] === '1' ? 'Ürün' : 'Hizmet'}</td>
+                                                    }
+                                                    return <td key={dataIndex}>{item[data['accessor']]}</td>
+                                                })
                                             }
                                             {
                                                 clickUpdate && 
@@ -99,13 +102,17 @@ const Index : FC<IDefaultProps> = (props : IDefaultProps) => {
                             { showConfirm && <ConfirmModal show={showConfirm} handleClose={handleCloseConfirm} handleConfirm={handleConfirm} />}
                         </Table>
                     </div>
-                    <Pagination>
-                        <Pagination.First onClick={() => setPage(0)} />
-                        <Pagination.Prev onClick={() => setPage(page-1)}  />
-                        <Pagination.Item>{page+1}</Pagination.Item>
-                        <Pagination.Next onClick={() => setPage(page+1)}/>
-                        <Pagination.Last onClick={() => setPage(page+1)} />
-                    </Pagination>
+                    {
+                        /*
+                            <Pagination>
+                                <Pagination.First onClick={() => setPage(0)} />
+                                <Pagination.Prev onClick={() => setPage(page-1)}  />
+                                <Pagination.Item>{page+1}</Pagination.Item>
+                                <Pagination.Next onClick={() => setPage(page+1)}/>
+                                <Pagination.Last onClick={() => setPage(page+1)} />
+                            </Pagination>
+                        */
+                    }
                 </div>
             }
         </>

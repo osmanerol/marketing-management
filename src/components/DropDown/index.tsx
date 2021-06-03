@@ -23,10 +23,10 @@ const Index : FC<IDefaultProps> = (props : IDefaultProps) => {
         <div className={cx(className)}>
             { text && <p className='sub-text mb-2'>{text}</p> }
                 <Form.Control id={id} name={id} as='select' custom  ref={register} onChange={onChange} defaultValue={defaultValue}>
-                    <option disabled selected></option>
+                    <option disabled></option>
                     {
-                        data.map((item : any) => (
-                            <option key={item.id} value={item[value]}>{item[accessor]}</option>
+                        data.map((item : any, index : number) => (
+                            <option key={index} value={item[value]}>{item[accessor]}</option>
                         ))
                     }
                 </Form.Control>

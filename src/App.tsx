@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { PrivateRoute } from './components';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // pages
@@ -11,7 +12,7 @@ const App = () => {
     <>
       <Switch>
         <Redirect exact from='/' to='/login' />
-        <Route path='/panel' component={PanelPage} />
+        <PrivateRoute path='/panel' component={PanelPage} />
         <Route path='/login' exact strict component={LoginPage} />
         <Route path='/signup' exact strict component={SignupPage} />
         <Route exact strict component={NotFoundPage} />

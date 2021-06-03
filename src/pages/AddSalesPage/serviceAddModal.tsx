@@ -13,61 +13,44 @@ import ServiceStore from '../../application/service/store/serviceStore';
 interface IDefaultProps {
     SalesStore? : typeof SalesStore,
     ServiceStore? : typeof ServiceStore,
-    id : any,
     show : boolean,
     handleClose : any,
 }
 
 const Index : FC<IDefaultProps> = inject('SalesStore', 'ServiceStore')(observer((props : IDefaultProps) => {
-    const { SalesStore : store, ServiceStore : serviceStore, id, show, handleClose } = props;
-    const [serviceId, setServiceId] = useState(null);
+    const { SalesStore : store, ServiceStore : serviceStore, show, handleClose } = props;
 
-    const createProduct = async () => {
-        //await store!.createProduct();
+    const createEmptyProduct = async () => {
+        await store!.createEmptyProduct();
+    }
+
+    const createEmptyService = async () => {
+        await store!.createEmptyService();
     }
 
     const getServices = async () => {
         await serviceStore!.getServices();
     }
 
-    const serviceSchema = yup.object().shape({
+    const productSchema = yup.object().shape({
         service : yup.string().required('Zorunlu alan'),
         amount : yup.string().required('Zorunlu alan'),
     })
 
     const { handleSubmit, register, errors } = useForm({
-        resolver : yupResolver(serviceSchema)
+        resolver : yupResolver(productSchema)
     })
 
     const handleConfirm = async () => {
-        if(id === 0){
-            await store!.create(serviceId);
-        }
-        else{
-            await store!.update(id, serviceId);
-        }
+        let price = ServiceStore.serviceList.result.find((item : any) => item.name === store!.service.name)!.price;
+        store!.service.price = price * store!.service.amount;
+        store!.addSaleItemList();
         handleClose();
     }
 
-    /*
     useEffect(() => {
-        if(store!.service.id){
-            categoryStore!.categoryList.result.forEach((item : any) => {
-                if(item.name === store!.service.category){
-                    setCategoryId(item.id);
-                }
-            })
-        }
-    }, [store?.service.category])
-    */
-
-    useEffect(() => {
-        /*
-        createService();
-        if(id){
-            getService();
-        }
-        */
+        createEmptyProduct();
+        createEmptyService();
         getServices();
     }, [])
 
@@ -78,13 +61,10 @@ const Index : FC<IDefaultProps> = inject('SalesStore', 'ServiceStore')(observer(
             </Modal.Header>
             <Modal.Body>
                 {
-                    //(id && store!.service.id === null) || (!id && store!.service.id !== null) ?
-                    false ?
-                    <Spinner />:
                     <div className='row'>
                         <DropDown className='col-md-6 col-12 mb-2' value='id' accessor='name' defaultValue={''} data={toJS(serviceStore!.serviceList.result)} id='service' text='Servis' register={register} errors={errors} 
-                        onChange={(event: any) => setServiceId(event.target.value) } />
-                        <Input className='col-md-6 col-12 mb-2' id='amount' text='Adet' defaultValue={''} register={register} errors={errors} onChange={(event: any) => {} } />
+                        onChange={(event: any) => store!.service.name = event.target.value } />
+                        <Input className='col-md-6 col-12 mb-2' id='amount' text='Adet' defaultValue={''} register={register} errors={errors} onChange={(event: any) => store!.service.amount = event.target.value } />
                     </div>
                 }
             </Modal.Body>

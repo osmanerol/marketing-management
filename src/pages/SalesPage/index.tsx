@@ -1,8 +1,7 @@
-import React, { FC , useState } from 'react';
+import React, { FC } from 'react';
 import { observer, inject } from 'mobx-react';
 import { Button, Table } from '../../components';
 import { useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 import SalesStore from '../../application/sales/store/salesStore';
 
 interface IDefaultProps {
@@ -19,12 +18,17 @@ const Index : FC<IDefaultProps> = inject('SalesStore')(observer((props : IDefaul
         history.push('/panel/sales/add');
     }
 
+    const addSales = () => {
+        store!.selectedItemId = 1;
+        history.push('/panel/sales/add');
+    }
+
     return (
         <>
             <div className='page-container'>
                 <header>
                     <h3 className='title'>Satışlar</h3>
-                    <Button text='Satış ekle' size='sm' className='button' as={Link} to='/panel/sales/add' />
+                    <Button text='Satış ekle' size='sm' className='button' onClick={addSales} />
                 </header>
                 <main>
                     <Table headers={headers} items={store!.salesList.result} isLoading={store!.salesList.isLoading} clickInspect={handleInspect} fetchData={store!.getAll} />

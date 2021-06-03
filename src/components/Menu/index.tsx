@@ -30,6 +30,7 @@ const Index = () => {
     }, [])
 
     const logout = () => {
+        localStorage.clear();
         history.push('/login');
     }
 

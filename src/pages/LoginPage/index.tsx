@@ -1,31 +1,57 @@
-import React, { useState } from 'react';
+import React, { FC, useEffect } from 'react';
 import './index.scss';
+import { inject, observer } from 'mobx-react';
 import { Container } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
 import { Input, Button } from '../../components';
 import LoginImage from '../../assets/login.jpg';
+import UserStore from '../../application/user/store/userStore';
 
-const Index = () => {
-    const [user, setUser] = useState({
-        username : '',
-        password: ''
-    })
+interface IDefaultProps{
+    UserStore? : typeof UserStore
+}
+
+const Index : FC<IDefaultProps> = inject('UserStore')(observer((props : IDefaultProps) => {
+    const { UserStore : store } = props;
     const toast = useToast();
     const history = useHistory();
 
-    const clickLogin = () => {
-        if(user.username !== '' && user.password !== ''){
-            toast({
-                title: "Giriş Başarılı",
-                description: "Panele yönlendiriliyorsunuz.",
-                status: "success",
-                duration: 2000,
-                isClosable: true,
-            })
-            setTimeout(() => {
-                history.push('/panel');
-            }, 2000)
+    useEffect(() => {
+        if(localStorage.getItem('logged-in')){
+            history.push('/panel');
+        }
+        else{
+            store!.error = null;
+            store!.createUser();
+        }
+    }, [])
+
+    const handleLogin = async () => {
+        if(store!.user.email !== '' && store!.user.password !== ''){
+            await store!.login();
+            if(store!.error){
+                toast({
+                    title: "Hata",
+                    description: "E-posta veya şifre hatalı.",
+                    status: "error",
+                    duration: 3000,
+                    isClosable: true,
+                })
+            }
+            else{
+                toast({
+                    title: "Giriş Başarılı",
+                    description: "Panele yönlendiriliyorsunuz.",
+                    status: "success",
+                    duration: 2000,
+                    isClosable: true,
+                })
+                localStorage.setItem('logged-in', 'true');
+                setTimeout(() => {
+                    history.push('/panel');
+                }, 2000)
+            }
         }
         else{
             toast({
@@ -49,9 +75,9 @@ const Index = () => {
                         <h2 className='title'>Marketing Management</h2>
                         <h2 className='sub-title'>Hesaba giriş yap</h2>
                         <div className='form-element'>
-                            <Input text='Kullanıcı adı' onChange={(event : any) => setUser({...user, username : event?.target.value})} />
-                            <Input type='password' text='Şifre' onChange={(event : any) => setUser({...user, password : event?.target.value})} />
-                            <Button text='Giriş Yap' className='form-button' onClick={clickLogin} />
+                            <Input text='E-posta' type='email' onChange={(event : any) => store!.user.email = event?.target.value } />
+                            <Input type='password' text='Şifre' onChange={(event : any) => store!.user.password = event?.target.value } />
+                            <Button text='Giriş Yap' className='form-button' onClick={handleLogin} />
                         </div>
                         <div className="go-signup">
                             <p className='text'>Hesabın yok mu ? <Link to='/signup'>Kaydol</Link></p>
@@ -65,6 +91,6 @@ const Index = () => {
             </div>
         </Container>
     );
-};
+}));
 
 export default Index;
