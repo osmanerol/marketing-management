@@ -6,7 +6,8 @@ import PanelPage from './PanelPage';
 import ProductPage from './ProductPage';
 import SalesPage from './SalesPage';
 import AddSalesPage from './AddSalesPage';
+import VisitPage from './VisitPage';
 import ServicePage from './ServicePage';
 import SignupPage from './SignupPage';
 
-export { CategoryPage, CustomerPage, LoginPage, NotFoundPage, PanelPage, ProductPage, SalesPage, AddSalesPage, ServicePage, SignupPage };
+export { CategoryPage, CustomerPage, LoginPage, NotFoundPage, PanelPage, ProductPage, SalesPage, AddSalesPage, VisitPage, ServicePage, SignupPage };

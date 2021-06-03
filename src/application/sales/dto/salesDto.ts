@@ -2,7 +2,7 @@ interface SalesDto{
     id : any;
     customerId : string;
     date : any;
-    totalPrice : number;
+    totalPrice : any;
 }
 
 export interface SalesCreateDto extends SalesDto { }

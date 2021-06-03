@@ -55,9 +55,11 @@ class SalesStore {
 
     @action async create() {
         let request = this.sale;
+        request.totalPrice = request.totalPrice.toString();
         delete request.id;
         const result = await firestore.collection('sales').add(request);
         this.saleDetailList.result.map(async (item : any) => {
+            item.price = item.price.toString();
             await firestore.collection('sales').doc(result.id).collection('saleItems').add(item);
         })
     }

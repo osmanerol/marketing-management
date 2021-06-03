@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './index.scss';
 import { NavLink, useHistory } from 'react-router-dom';
-import { Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure } from "@chakra-ui/react"
+import { Drawer, DrawerBody, DrawerHeader, DrawerOverlay, DrawerContent, DrawerCloseButton, useDisclosure } from "@chakra-ui/react";
 import { FaUsers } from 'react-icons/fa';
 import { RiSettings3Fill } from 'react-icons/ri';
 import { FaProjectDiagram } from 'react-icons/fa';
 import { GiTennisBall } from 'react-icons/gi';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { MdPayment } from 'react-icons/md';
+import { BsFillCalendarFill } from 'react-icons/bs';
 import { RiLogoutCircleRFill } from 'react-icons/ri';
 
 const Index = () => {
@@ -50,9 +51,10 @@ const Index = () => {
                                 <div className="menu-items" onClick={onClose}>
                                     <NavLink to='/panel/category' className='menu-item-link'><FaProjectDiagram className='icon' /> <span>Kategoriler</span></NavLink>
                                     <NavLink to='/panel/product' className='menu-item-link'><GiTennisBall className='icon' /> <span>Ürünler</span></NavLink>
-                                    <NavLink to='/panel/service' className='menu-item-link'><RiSettings3Fill className='icon' /> <span>Servisler</span></NavLink>
+                                    <NavLink to='/panel/service' className='menu-item-link'><RiSettings3Fill className='icon' /> <span>Hizmetler</span></NavLink>
                                     <NavLink to='/panel/customer' className='menu-item-link'><FaUsers className='icon' /> <span>Müşteriler</span></NavLink>
                                     <NavLink to='/panel/sales' className='menu-item-link'><MdPayment className='icon' /> <span>Satışlar</span></NavLink>
+                                    <NavLink to='/panel/visits' className='menu-item-link'><BsFillCalendarFill className='icon' /> <span>Ziyaretler</span></NavLink>
                                     <span className='menu-item-link' onClick={logout}><RiLogoutCircleRFill className='icon' /> <span>Çıkış Yap</span></span>
                                 </div>
                             </DrawerBody>
@@ -63,9 +65,10 @@ const Index = () => {
                 <div className="menu-items">
                     <NavLink to='/panel/category' className='menu-item-link'><FaProjectDiagram className='icon' /> <span>Kategoriler</span></NavLink>
                     <NavLink to='/panel/product' className='menu-item-link'><GiTennisBall className='icon' /> <span>Ürünler</span></NavLink>
-                    <NavLink to='/panel/service' className='menu-item-link'><RiSettings3Fill className='icon' /> <span>Servisler</span></NavLink>
+                    <NavLink to='/panel/service' className='menu-item-link'><RiSettings3Fill className='icon' /> <span>Hizmetler</span></NavLink>
                     <NavLink to='/panel/customer' className='menu-item-link'><FaUsers className='icon' /> <span>Müşteriler</span></NavLink>
                     <NavLink to='/panel/sales' className='menu-item-link'><MdPayment className='icon' /> <span>Satışlar</span></NavLink>
+                    <NavLink to='/panel/visits' className='menu-item-link'><BsFillCalendarFill className='icon' /> <span>Ziyaretler</span></NavLink>
                     <span className='menu-item-link' onClick={logout}><RiLogoutCircleRFill className='icon' /> <span>Çıkış Yap</span></span>
                 </div>
             }

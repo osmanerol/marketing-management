@@ -36,8 +36,8 @@ const Index : FC<IDefaultProps> = inject('ServiceStore')(observer((props : IDefa
         <>
             <div className='page-container'>
                 <header>
-                    <h3 className='title'>Servisler</h3>
-                    <Button text='Servis ekle' size='sm' className='button' onClick={handleOpenModal} />
+                    <h3 className='title'>Hizmetler</h3>
+                    <Button text='Hizmet ekle' size='sm' className='button' onClick={handleOpenModal} />
                 </header>
                 <main>
                     <Table headers={headers} items={store!.serviceList.result} isLoading={store!.serviceList.isLoading} clickUpdate={handleUpdate} clickDelete={handleDelete} fetchData={store!.getAll} />

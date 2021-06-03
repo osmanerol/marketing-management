@@ -60,7 +60,7 @@ const Index : FC<IDefaultProps> = inject('SalesStore', 'CustomerStore')(observer
     return (
         <Modal show={show} onHide={handleClose} size='lg'>
             <Modal.Header closeButton>
-                <Modal.Title>Ürün</Modal.Title>
+                <Modal.Title>Satışı Tamamla</Modal.Title>
             </Modal.Header>
             <Modal.Body>
                 {
